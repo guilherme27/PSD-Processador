@@ -4,11 +4,16 @@ module proc (DIN, Resetn, Clock, Run, Done, BusWires);
 	output Done;
 	output [8:0] BusWires;
 	parameter T0 = 2'b00, T1 = 2'b01, T2 = 2'b10, T3 = 2'b11;
+	wire [7:0] BusFSMReg, [3:0] BusFSMMulti;
 	//. . . declaração de variáveis
 	
-	assign I = IR[1:3];
-	dec3to8 decX (IR[4:6], 1'b1, Xreg);
-	dec3to8 decY (IR[7:9], 1'b1, Yreg);
+	/*assign I = IR[8:6];
+	assign Rx = IR[5:3];
+	assign Ry = IR[2:0];
+	*/
+	
+	dec3to8 decX (IR[5:3], 1'b1, Xreg);
+	dec3to8 decY (IR[2:0], 1'b1, Yreg);
 	
 	regn reg_0 (BusWires, Rin[0], Clock, R0);
 	regn reg_1 (BusWires, Rin[1], Clock, R1);
@@ -44,21 +49,27 @@ module proc (DIN, Resetn, Clock, Run, Done, BusWires);
 		case (Tstep_Q)
 			T0: // Armazene DIN no registrador IR no passo 0
 			begin
-				IRin = 1'b1;
+				if (!Run)
+					Tstep_Q = T0;
+				else
+					IRin = 1'b1;
+					Tstep_Q = T1;
 			end
 
 			T1: // Defina os sinais do passo 1
-			case (I)
-				//. . .
+			case (IR[8:6])
+				T0:
+					BusFSMMulti = IR[2:0];
+					BusFSMReg = Xreg;
 			endcase
 
 			T2: // Defina os sinais do passo 2
-			case (I)
+			case (IR[8:6])
 				//. . .
 			endcase
 
 			T3: // Defina os sinais do passo 3
-			case (I)
+			case (IR[8:6])
 				//. . .
 			endcase
 		endcase
@@ -75,14 +86,14 @@ module dec3to8(W, En, Y);
 	always @(W or En) begin
 		if (En == 1)
 			case (W)
-				3'b000: Y = 8'b10000000;
-				3'b001: Y = 8'b01000000;
-				3'b010: Y = 8'b00100000;
-				3'b011: Y = 8'b00010000;
-				3'b100: Y = 8'b00001000;
-				3'b101: Y = 8'b00000100;
-				3'b110: Y = 8'b00000010;
-				3'b111: Y = 8'b00000001;
+				3'b000: Y = 8'b00000001;
+				3'b001: Y = 8'b00000010;
+				3'b010: Y = 8'b00000100;
+				3'b011: Y = 8'b00001000;
+				3'b100: Y = 8'b00010000;
+				3'b101: Y = 8'b00100000;
+				3'b110: Y = 8'b01000000;
+				3'b111: Y = 8'b10000000;
 			endcase
 		else
 			Y = 8'b00000000;
