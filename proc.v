@@ -3,8 +3,8 @@ module proc (DIN, Resetn, Clock, Run, Done, BusWires);
 	input Resetn, Clock, Run;
 	output Done;
 	output [8:0] BusWires;
-	parameter T0 = 2'b00, T1 = 2'b01, T2 = 2'b10, T3 = 2'b11;
-	wire [7:0] BusFSMReg, [3:0] BusFSMMulti;
+	parameter T0 = 2'b00, T1 = 2'b01, T2 = 2'b10, T3 = 2'b11, DINout = 4'b1000, Gout = 4'b1001;
+	wire [7:0] BusFSMReg, [3:0] BusFSMMulti, [2:0]ulaControl;
 	//. . . declaração de variáveis
 	
 	/*assign I = IR[8:6];
@@ -30,7 +30,7 @@ module proc (DIN, Resetn, Clock, Run, Done, BusWires);
 	
 	ula addSub (BusWires, BusWires, DIN, Clock, Uout)
 
-	// Controle de estados do FSM
+/*	// Controle de estados do FSM
 	always @(Tstep_Q, Run, Done) begin
 		case (Tstep_Q)
 			T0: // Os dados são carregados no IR nesse passo
@@ -41,7 +41,7 @@ module proc (DIN, Resetn, Clock, Run, Done, BusWires);
 			T1:
 				//. . .
 		endcase
-	end
+	end*/
 
 	// Controle das saídas da FSM
 	always @(posedge Clock or negedge Resetn or Tstep_Q or I or Xreg or Yreg) begin
@@ -57,21 +57,59 @@ module proc (DIN, Resetn, Clock, Run, Done, BusWires);
 			end
 
 			T1: // Defina os sinais do passo 1
-			case (IR[8:6])
-				T0:
-					BusFSMMulti = IR[2:0];
-					BusFSMReg = Xreg;
-			endcase
+				case (IR[8:6])
+					T0:
+						BusFSMMulti = IR[2:0];
+						BusFSMReg = Xreg;
+						done = 1'b1;
+					
+					T1:
+						BusFSMMulti = DINout;
+						BusFSMReg = Xreg;
+						done = 1'b1;
+					
+					T2:
+						BusFSMMulti = IR[5:3];
+						Ain = 1'b1;
+						TStep_Q = T2;
+						
+					T3:
+						BusFSMMulti = IR[5:3];
+						Ain = 1'b1;
+						TStep_Q = T2;
+						
+						
+				endcase
 
 			T2: // Defina os sinais do passo 2
-			case (IR[8:6])
-				//. . .
-			endcase
+				case (IR[8:6]) //--------------- I0 e I1 não aparecem pois não terminam de ser execultadas no T1
+					T2:
+						BusFSMMulti = IR[2:0];
+						Gin = 1'b1;
+						ulaControl = 3'b010;
+						TStep_Q = T3;
+						
+					T3:
+						BusFSMMulti = IR[2:0];
+						Gin = 1'b1;
+						ulaControl = 3'b011;
+						TStep_Q = T3;
+						
+				endcase
 
 			T3: // Defina os sinais do passo 3
-			case (IR[8:6])
-				//. . .
-			endcase
+				case (IR[8:6]) //--------------- I0 e I1 não aparecem pois não terminam de ser execultadas no T1
+					T2:
+						BusFSMMulti = Gout;
+						BusFSMReg = Xreg;
+						done = 1'b1;
+						
+					T3:
+						BusFSMMulti = Gout;
+						BusFSMReg = Xreg;
+						done = 1'b1;
+						
+				endcase
 		endcase
 	end
 endmodule
