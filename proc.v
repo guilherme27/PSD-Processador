@@ -21,7 +21,7 @@ module proc (DIN, Resetn, Clock, Run, Done, BusWires);
 	BusFSMMulti = controle de acesso ao multiplexador
 	BusAout = saída do registrador A
 	BusGout = saída do registrador G
-	BusIRout = saída do registrador BusIRout
+	BusIRout = saída do registrador IR
 	BusUout = saída do registrador U
 	*/
 	wire [7:0] BusFSMReg, [3:0] BusFSMMulti, [8:0] BusAout,
@@ -33,7 +33,7 @@ module proc (DIN, Resetn, Clock, Run, Done, BusWires);
 	// Fios para controle de acesso a escrita dos registradores A, G e IR.
 	wire WAin, WGin, WIRin;
 
-	// Ligação entre os fios e os barramentos das saídas dos registradores. **********Onde estão BusFGMReg e BusFSMMulti?**********
+	// Ligação entre os fios e os barramentos das saídas dos registradores.
 	assign BusAout = Aout;
 	assign BusGout = Gout;
 	assign BusUout = Uout;
@@ -132,8 +132,8 @@ module proc (DIN, Resetn, Clock, Run, Done, BusWires);
 							case (BusIRout[8:6])
 								MV:
 								/* Operação move:
-								Essa operação move um dado de um determinado re gistrador Y para um determinado registrador X,
-								habilitando a passagem do dado de Y pelo multi plexador, e habilitando o recebimento do dado do
+								Essa operação move um dado de um determinado registrador Y para um determinado registrador X,
+								habilitando a passagem do dado de Y pelo multiplexador, e habilitando o recebimento do dado do
 								barramento pelo registrador X. Ao término, o processador sinaliza o término da operação e a
 								FSM retorna para o estado inicial.
 								*/
@@ -264,8 +264,8 @@ module dec3to8(In, Enable, Q);
 				3'b111: Q = 8'b10000000;
 			endcase
 		else
-			/* Caso qualquer outra entrada, senão as especificadas, for fornecida para o decodificador, o mesmo
-			não habilita a escrita por nenhum registrador.
+			/* Caso o Enable do decodificador, não esteja em estado ativo , o mesmo
+			não habilita a escrita para nenhum registrador.
 			*/
 			Q = 8'b00000000;
 	end
@@ -288,15 +288,15 @@ module regn(R, Rin, Clock, Q);
 endmodule // regn
 
 module ula(a, b, sel, Q);
-	/* Unidade Lógica e Aritmética:
-	Responsável por realizar as sumas e as subtrações do processador.
+	/* Unidade Lógica e Aritmética (ULA):
+	Responsável por realizar as somas e as subtrações do processador.
 	Recebe duas palavras de n bits (onde a quantidade de n é especificada em um parâmetro do código)
 	e, dependendo do sinal do controle (sel), realiza a soma ou a subtração entre as duas palavras.
 	*/
 	parameter n = 9
 	input [n-1:0] a, b;
-	input [2:0] sel;
-
+	input [2:0] sel; // O motivo para que o sel (barramento de controle da ULA) seja de 3 bits é para deixar em aberto
+	 				 // para aumentar a quantidade de funções possiveis da ula em uma possivel expansão
 	output reg [n-1:0] Q;
 
 	always @(a or b or sel) begin
@@ -310,7 +310,7 @@ endmodule // ula
 
 module multiplexador (R0, R1, R2, R3, R4, R5, R6, R7, DIN, G, CTRL, Q);
 	/* Multiplexador de 8 bits:
-	Através do sinal do controle (CTRL), seleciona qual registrador deve ter seu dado fornecido ao barramento.
+	   Através do sinal do controle (CTRL), seleciona qual registrador deve ter seu dado fornecido ao barramento.
 	*/
 	input [8:0]R0, [8:0]R1, [8:0]R2, [8:0]R3, [8:0]R4, [8:0]R5,
 		  [8:0]R6, [8:0]R7, [8:0]DIN, [8:0]G, [3:0]CTRL;
