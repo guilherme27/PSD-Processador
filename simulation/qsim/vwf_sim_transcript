@@ -7,9 +7,11 @@ Note: if both ModelSim-Altera and ModelSim executables are available, ModelSim-A
 
 **** Generating the ModelSim Testbench ****
 
-quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processador -c Processador --vector_source="/home/alfredo/Desktop/PSD-Processador/Waveform.vwf" --testbench_file="/home/alfredo/Desktop/PSD-Processador/simulation/qsim/Waveform.vwf.vt"
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processador -c Processador --vector_source="/home/alfredo/Desktop/PSD-Processador/MVI.vwf" --testbench_file="/home/alfredo/Desktop/PSD-Processador/simulation/qsim/MVI.vwf.vt"
 
-Info: *******************************************************************Info: Running Quartus Prime EDA Netlist Writer    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition    Info: Copyright (C) 2017  Intel Corporation. All rights reserved.    Info: Your use of Intel Corporation's design tools, logic functions     Info: and other software and tools, and its AMPP partner logic     Info: functions, and any output files from any of the foregoing     Info: (including device programming or simulation files), and any     Info: associated documentation or information are expressly subject     Info: to the terms and conditions of the Intel Program License     Info: Subscription Agreement, the Intel Quartus Prime License Agreement,    Info: the Intel FPGA IP License Agreement, or other applicable license    Info: agreement, including, without limitation, that your use is for    Info: the sole purpose of programming logic devices manufactured by    Info: Intel and sold by Intel or its authorized distributors.  Please    Info: refer to the applicable agreement for further details.    Info: Processing started: Thu Jul 19 19:11:40 2018Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processador -c Processador --vector_source=/home/alfredo/Desktop/PSD-Processador/Waveform.vwf --testbench_file=/home/alfredo/Desktop/PSD-Processador/simulation/qsim/Waveform.vwf.vtWarning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info: *******************************************************************Info: Running Quartus Prime EDA Netlist Writer    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition    Info: Copyright (C) 2017  Intel Corporation. All rights reserved.    Info: Your use of Intel Corporation's design tools, logic functions     Info: and other software and tools, and its AMPP partner logic     Info: functions, and any output files from any of the foregoing     Info: (including device programming or simulation files), and any     Info: associated documentation or information are expressly subject     Info: to the terms and conditions of the Intel Program License     Info: Subscription Agreement, the Intel Quartus Prime License Agreement,    Info: the Intel FPGA IP License Agreement, or other applicable license    Info: agreement, including, without limitation, that your use is for    Info: the sole purpose of programming logic devices manufactured by    Info: Intel and sold by Intel or its authorized distributors.  Please    Info: refer to the applicable agreement for further details.    Info: Processing started: Sat Jul 21 19:21:05 2018Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processador -c Processador --vector_source=/home/alfredo/Desktop/PSD-Processador/MVI.vwf --testbench_file=/home/alfredo/Desktop/PSD-Processador/simulation/qsim/MVI.vwf.vtWarning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+07): Can't find port "enableG" in design
+an't find port "Reg:reg_2|Out[1]" in design
 Completed successfully. 
 
 Completed successfully. 
@@ -18,7 +20,7 @@ Completed successfully.
 
 quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="/home/alfredo/Desktop/PSD-Processador/simulation/qsim/" Processador -c Processador
 
-Info: *******************************************************************Info: Running Quartus Prime EDA Netlist Writer    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition    Info: Copyright (C) 2017  Intel Corporation. All rights reserved.    Info: Your use of Intel Corporation's design tools, logic functions     Info: and other software and tools, and its AMPP partner logic     Info: functions, and any output files from any of the foregoing     Info: (including device programming or simulation files), and any     Info: associated documentation or information are expressly subject     Info: to the terms and conditions of the Intel Program License     Info: Subscription Agreement, the Intel Quartus Prime License Agreement,    Info: the Intel FPGA IP License Agreement, or other applicable license    Info: agreement, including, without limitation, that your use is for    Info: the sole purpose of programming logic devices manufactured by    Info: Intel and sold by Intel or its authorized distributors.  Please    Info: refer to the applicable agreement for further details.    Info: Processing started: Thu Jul 19 19:11:43 2018Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=/home/alfredo/Desktop/PSD-Processador/simulation/qsim/ Processador -c ProcessadorWarning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.Info (204019): Generated file Processador.vo in folder "/home/alfredo/Desktop/PSD-Processador/simulation/qsim//" for EDA simulation toolInfo: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning    Info: Peak virtual memory: 1127 megabytes    Info: Processing ended: Thu Jul 19 19:11:44 2018    Info: Elapsed time: 00:00:01    Info: Total CPU time (on all processors): 00:00:01
+Info: *******************************************************************Info: Running Quartus Prime EDA Netlist Writer    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition    Info: Copyright (C) 2017  Intel Corporation. All rights reserved.    Info: Your use of Intel Corporation's design tools, logic functions     Info: and other software and tools, and its AMPP partner logic     Info: functions, and any output files from any of the foregoing     Info: (including device programming or simulation files), and any     Info: associated documentation or information are expressly subject     Info: to the terms and conditions of the Intel Program License     Info: Subscription Agreement, the Intel Quartus Prime License Agreement,    Info: the Intel FPGA IP License Agreement, or other applicable license    Info: agreement, including, without limitation, that your use is for    Info: the sole purpose of programming logic devices manufactured by    Info: Intel and sold by Intel or its authorized distributors.  Please    Info: refer to the applicable agreement for further details.    Info: Processing started: Sat Jul 21 19:21:08 2018Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=/home/alfredo/Desktop/PSD-Processador/simulation/qsim/ Processador -c ProcessadorWarning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.Info (204019): Generated file Processador.vo in folder "/home/alfredo/Desktop/PSD-Processador/simulation/qsim//" for EDA simulation toolInfo: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning    Info: Peak virtual memory: 1125 megabytes    Info: Processing ended: Sat Jul 21 19:21:09 2018    Info: Elapsed time: 00:00:01    Info: Total CPU time (on all processors): 00:00:02
 Completed successfully. 
 
 **** Generating the ModelSim .do script ****
@@ -36,28 +38,30 @@ Reading pref.tcl
 # do Processador.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:11:48 on Jul 19,2018# vlog -work work Processador.vo 
-# -- Compiling module proc
+# Start time: 19:21:11 on Jul 21,2018# vlog -work work Processador.vo 
+# -- Compiling module Proc
 # 
-# Top level modules:# 	proc# End time: 19:11:48 on Jul 19,2018, Elapsed time: 0:00:00# Errors: 0, Warnings: 0
+# Top level modules:# 	Proc# End time: 19:21:11 on Jul 21,2018, Elapsed time: 0:00:00# Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:11:48 on Jul 19,2018# vlog -work work Waveform.vwf.vt # -- Compiling module proc_vlg_vec_tst
-# # Top level modules:# 	proc_vlg_vec_tst# End time: 19:11:48 on Jul 19,2018, Elapsed time: 0:00:00# Errors: 0, Warnings: 0
-# vsim -novopt -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.proc_vlg_vec_tst # Start time: 19:11:48 on Jul 19,2018# Loading work.proc_vlg_vec_tst# Loading work.proc# Loading altera_ver.dffeas# Loading altera_ver.PRIM_GDFF_LOW
+# Start time: 19:21:11 on Jul 21,2018# vlog -work work MVI.vwf.vt 
+# -- Compiling module Proc_vlg_vec_tst
+# 
+# Top level modules:# 	Proc_vlg_vec_tst# End time: 19:21:11 on Jul 21,2018, Elapsed time: 0:00:00# Errors: 0, Warnings: 0
+# vsim -novopt -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.Proc_vlg_vec_tst # Start time: 19:21:11 on Jul 21,2018# Loading work.Proc_vlg_vec_tst# Loading work.Proc# Loading altera_ver.dffeas# Loading altera_ver.PRIM_GDFF_LOW
 # after#25
-# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.# ** Note: $finish    : Waveform.vwf.vt(52)#    Time: 1 us  Iteration: 0  Instance: /proc_vlg_vec_tst
-# End time: 19:11:49 on Jul 19,2018, Elapsed time: 0:00:01# Errors: 0, Warnings: 1
+# ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.# ** Note: $finish    : MVI.vwf.vt(52)#    Time: 1 us  Iteration: 0  Instance: /Proc_vlg_vec_tst
+# End time: 19:21:11 on Jul 21,2018, Elapsed time: 0:00:00# Errors: 0, Warnings: 1
 Completed successfully. 
 
 **** Converting ModelSim VCD to vector waveform ****
 
-Reading /home/alfredo/Desktop/PSD-Processador/Waveform.vwf...
+Reading /home/alfredo/Desktop/PSD-Processador/MVI.vwf...
 
 Reading /home/alfredo/Desktop/PSD-Processador/simulation/qsim/Processador.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to /home/alfredo/Desktop/PSD-Processador/simulation/qsim/Processador_20180719191149.sim.vwf
+Writing the resulting VWF to /home/alfredo/Desktop/PSD-Processador/simulation/qsim/Processador_20180721192111.sim.vwf
 
 Finished VCD to VWF conversion.
 

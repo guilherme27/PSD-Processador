@@ -1,32 +1,32 @@
 # do Processador.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:11:48 on Jul 19,2018
+# Start time: 19:21:11 on Jul 21,2018
 # vlog -work work Processador.vo 
-# -- Compiling module proc
+# -- Compiling module Proc
 # 
 # Top level modules:
-# 	proc
-# End time: 19:11:48 on Jul 19,2018, Elapsed time: 0:00:00
+# 	Proc
+# End time: 19:21:11 on Jul 21,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 19:11:48 on Jul 19,2018
-# vlog -work work Waveform.vwf.vt 
-# -- Compiling module proc_vlg_vec_tst
+# Start time: 19:21:11 on Jul 21,2018
+# vlog -work work MVI.vwf.vt 
+# -- Compiling module Proc_vlg_vec_tst
 # 
 # Top level modules:
-# 	proc_vlg_vec_tst
-# End time: 19:11:48 on Jul 19,2018, Elapsed time: 0:00:00
+# 	Proc_vlg_vec_tst
+# End time: 19:21:11 on Jul 21,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vsim -novopt -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.proc_vlg_vec_tst 
-# Start time: 19:11:48 on Jul 19,2018
-# Loading work.proc_vlg_vec_tst
-# Loading work.proc
+# vsim -novopt -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.Proc_vlg_vec_tst 
+# Start time: 19:21:11 on Jul 21,2018
+# Loading work.Proc_vlg_vec_tst
+# Loading work.Proc
 # Loading altera_ver.dffeas
 # Loading altera_ver.PRIM_GDFF_LOW
 # after#25
 # ** Warning: (vsim-3116) Problem reading symbols from linux-gate.so.1 : can not open ELF file.
-# ** Note: $finish    : Waveform.vwf.vt(52)
-#    Time: 1 us  Iteration: 0  Instance: /proc_vlg_vec_tst
-# End time: 19:11:49 on Jul 19,2018, Elapsed time: 0:00:01
+# ** Note: $finish    : MVI.vwf.vt(52)
+#    Time: 1 us  Iteration: 0  Instance: /Proc_vlg_vec_tst
+# End time: 19:21:11 on Jul 21,2018, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 1

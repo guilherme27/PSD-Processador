@@ -1,12 +1,12 @@
-Fitter Status : Successful - Thu Jul 19 19:10:22 2018
+Fitter Status : Successful - Sat Jul 21 19:26:30 2018
 Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 Revision Name : Processador
-Top-level Entity Name : proc
+Top-level Entity Name : Proc
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 2 / 32,070 ( < 1 % )
-Total registers : 3
+Logic utilization (in ALMs) : 75 / 32,070 ( < 1 % )
+Total registers : 120
 Total pins : 22 / 457 ( 5 % )
 Total virtual pins : 0
 Total block memory bits : 0 / 4,065,280 ( 0 % )
