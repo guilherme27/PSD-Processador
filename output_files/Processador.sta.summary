@@ -3,99 +3,99 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1100mV 85C Model Setup 'enableDec'
-Slack : -5.348
-TNS   : -42.252
+Slack : -5.476
+TNS   : -41.399
 
 Type  : Slow 1100mV 85C Model Setup 'Clock'
-Slack : -4.135
-TNS   : -247.440
+Slack : -4.075
+TNS   : -244.536
 
 Type  : Slow 1100mV 85C Model Hold 'Clock'
-Slack : -3.040
-TNS   : -18.052
+Slack : -3.066
+TNS   : -18.141
 
 Type  : Slow 1100mV 85C Model Hold 'enableDec'
-Slack : 3.810
+Slack : 3.781
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Clock'
 Slack : -0.394
-TNS   : -63.920
+TNS   : -63.400
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'enableDec'
-Slack : 0.430
+Slack : 0.421
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'enableDec'
-Slack : -5.495
-TNS   : -43.092
+Slack : -5.620
+TNS   : -42.325
 
 Type  : Slow 1100mV 0C Model Setup 'Clock'
-Slack : -3.977
-TNS   : -240.953
+Slack : -3.893
+TNS   : -236.579
 
 Type  : Slow 1100mV 0C Model Hold 'Clock'
-Slack : -3.075
-TNS   : -18.256
+Slack : -3.142
+TNS   : -18.537
 
 Type  : Slow 1100mV 0C Model Hold 'enableDec'
-Slack : 3.807
+Slack : 3.787
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Clock'
 Slack : -0.394
-TNS   : -68.009
+TNS   : -67.424
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'enableDec'
-Slack : 0.394
+Slack : 0.382
 TNS   : 0.000
 
-Type  : Fast 1100mV 85C Model Setup 'Clock'
-Slack : -2.838
-TNS   : -100.547
-
 Type  : Fast 1100mV 85C Model Setup 'enableDec'
-Slack : -2.681
-TNS   : -20.845
+Slack : -2.711
+TNS   : -20.413
+
+Type  : Fast 1100mV 85C Model Setup 'Clock'
+Slack : -2.709
+TNS   : -101.337
 
 Type  : Fast 1100mV 85C Model Hold 'Clock'
-Slack : -1.486
-TNS   : -8.810
+Slack : -1.497
+TNS   : -8.818
 
 Type  : Fast 1100mV 85C Model Hold 'enableDec'
-Slack : 2.345
+Slack : 2.317
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Clock'
 Slack : -0.085
-TNS   : -9.640
+TNS   : -9.567
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'enableDec'
-Slack : 0.470
+Slack : 0.460
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'enableDec'
-Slack : -2.552
-TNS   : -20.034
+Slack : -2.617
+TNS   : -19.709
 
 Type  : Fast 1100mV 0C Model Setup 'Clock'
-Slack : -2.236
-TNS   : -83.543
+Slack : -2.130
+TNS   : -83.542
 
 Type  : Fast 1100mV 0C Model Hold 'Clock'
-Slack : -1.447
-TNS   : -8.586
+Slack : -1.471
+TNS   : -8.660
 
 Type  : Fast 1100mV 0C Model Hold 'enableDec'
-Slack : 2.278
+Slack : 2.255
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Clock'
 Slack : -0.083
-TNS   : -9.497
+TNS   : -9.423
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'enableDec'
-Slack : 0.480
+Slack : 0.477
 TNS   : 0.000
 
 ------------------------------------------------------------

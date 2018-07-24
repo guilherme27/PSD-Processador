@@ -18,7 +18,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "07/21/2018 19:21:06"
+// Generated on "07/24/2018 12:14:52"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          Proc
 // 
@@ -55,30 +55,37 @@ end
 // Resetn
 initial
 begin
-	Resetn = 1'b0;
+	Resetn = 1'b1;
+	Resetn = #20000 1'b0;
 	Resetn = #20000 1'b1;
 end 
 
 // Clock
-always
+initial
 begin
 	Clock = 1'b0;
-	Clock = #10000 1'b1;
-	#10000;
+	Clock = #30000 1'b1;
+	# 10000;
+	repeat(48)
+	begin
+		Clock = 1'b0;
+		Clock = #10000 1'b1;
+		# 10000;
+	end
 end 
 
 // Run
 initial
 begin
 	Run = 1'b0;
-	Run = #20000 1'b1;
+	Run = #40000 1'b1;
 	Run = #20000 1'b0;
 end 
 // DIN[ 8 ]
 initial
 begin
 	DIN[8] = 1'b0;
-	DIN[8] = #40000 1'b1;
+	DIN[8] = #60000 1'b1;
 	DIN[8] = #20000 1'b0;
 end 
 // DIN[ 7 ]
@@ -90,7 +97,7 @@ end
 initial
 begin
 	DIN[6] = 1'b0;
-	DIN[6] = #20000 1'b1;
+	DIN[6] = #40000 1'b1;
 	DIN[6] = #40000 1'b0;
 end 
 // DIN[ 5 ]
@@ -102,7 +109,7 @@ end
 initial
 begin
 	DIN[4] = 1'b0;
-	DIN[4] = #40000 1'b1;
+	DIN[4] = #60000 1'b1;
 	DIN[4] = #20000 1'b0;
 end 
 // DIN[ 3 ]
@@ -114,7 +121,7 @@ end
 initial
 begin
 	DIN[2] = 1'b0;
-	DIN[2] = #40000 1'b1;
+	DIN[2] = #60000 1'b1;
 	DIN[2] = #20000 1'b0;
 end 
 // DIN[ 1 ]
@@ -126,7 +133,7 @@ end
 initial
 begin
 	DIN[0] = 1'b0;
-	DIN[0] = #40000 1'b1;
+	DIN[0] = #60000 1'b1;
 	DIN[0] = #20000 1'b0;
 end 
 endmodule

@@ -72,16 +72,12 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 	Decoder3x8 addressRX (.En(enableDec), .In(outputIR[5:3]), .Out(enableRegX));
 
 	// Controle das saídas da FSM.
-	always @(posedge Clock or negedge Resetn)
+	always @(posedge Clock
 		begin
-			/* A FSM se mantém realizando transições entre seus respectivos estados enquanto não há o reset da mesma.
-			Quando o reset é colocado em nível lógico baixo, a FSM retorna para o seu estado inicial, e todos os sinais
-			referentes ao controle do processador são reiniciados.
-			*/
-			if (!Resetn)
+			if(!Resetn)
 				begin
 					Tstep_Q = T0;                                               // Transita para T0
-					enableIR = 1'b0;                                            // Desabilita IR
+					enableIR = 1'b1;                                            // Habilita IR
 					enableA = 1'b0;                                             // Desabilita A
 					enableG = 1'b0;                                             // Desabilita G
 					ctrlMux = DefaultMux;                                       // O mux tem sua saída setada para zero
@@ -89,6 +85,11 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 					Done = 1'b1;                                                // Sinaliza que terminou
 				end
 			else
+			/* A FSM se mantém realizando transições entre seus respectivos estados enquanto não há o reset da mesma.
+			Quando o reset é colocado em nível lógico baixo, a FSM retorna para o seu estado inicial, e todos os sinais
+			referentes ao controle do processador são reiniciados.
+			*/
+
 				/* Se não há reset, a FSM prossegue com o processamento normal. Para realização do processamento,
 				existem quatro tempos, que são ditos pelos ciclos de clock, a saber: T0, T1, T2 e T3.
 				*/
@@ -126,6 +127,7 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 										begin
 											ctrlMux = outputIR[2:0];            // O mux tem sua saída setada para o endereço de Y
 											enableR = enableRegX;               // O decodificador habilita a entrada para o endereço X
+											enableIR = 1'b1;
 											Done = 1'b1;                        // Sinaliza que terminou (em seguida, transitaremos de volta para T0)
 										end
 									MVI :
@@ -138,6 +140,7 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 										begin
 											ctrlMux = DINMuxOut;                // O mux tem sua saída setada para a constante DIN
 											enableR = enableRegX;               // O decodificador habilita a entrada para o endereço X
+											enableIR = 1'b1;
 											Done = 1'b1;                        // Sinaliza que terminou (em seguida, transitaremos de volta para T0)
 										end
 									ADD :
@@ -192,6 +195,7 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 								ctrlMux = GMuxOut;								// O mux tem sua saída setada para G
 								enableR = enableRegX;							// O decodificador habilita a entrada para o endereço X
 								Done = 1'b1;									// Sinaliza que terminou
+								enableIR = 1'b1;
 								Tstep_Q = T0;									// Transita para T0
 							end
 				endcase

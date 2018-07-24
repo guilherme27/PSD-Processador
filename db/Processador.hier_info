@@ -27,7 +27,7 @@ Resetn => ctrlMux[2].PRESET
 Resetn => ctrlMux[3].PRESET
 Resetn => enableG.ACLR
 Resetn => enableA.ACLR
-Resetn => enableIR.ACLR
+Resetn => enableIR.PRESET
 Resetn => Tstep_Q~3.DATAIN
 Clock => Clock.IN11
 Run => Tstep_Q.DATAB
@@ -35,16 +35,16 @@ Run => Done.OUTPUTSELECT
 Run => enableIR.OUTPUTSELECT
 Run => enableDec.OUTPUTSELECT
 Run => Selector0.IN2
-Done << Done~reg0.DB_MAX_OUTPUT_PORT_TYPE
-BusWires[0] << BusWires[0].DB_MAX_OUTPUT_PORT_TYPE
-BusWires[1] << BusWires[1].DB_MAX_OUTPUT_PORT_TYPE
-BusWires[2] << BusWires[2].DB_MAX_OUTPUT_PORT_TYPE
-BusWires[3] << BusWires[3].DB_MAX_OUTPUT_PORT_TYPE
-BusWires[4] << BusWires[4].DB_MAX_OUTPUT_PORT_TYPE
-BusWires[5] << BusWires[5].DB_MAX_OUTPUT_PORT_TYPE
-BusWires[6] << BusWires[6].DB_MAX_OUTPUT_PORT_TYPE
-BusWires[7] << BusWires[7].DB_MAX_OUTPUT_PORT_TYPE
-BusWires[8] << BusWires[8].DB_MAX_OUTPUT_PORT_TYPE
+Done <= Done~reg0.DB_MAX_OUTPUT_PORT_TYPE
+BusWires[0] <= BusWires[0].DB_MAX_OUTPUT_PORT_TYPE
+BusWires[1] <= BusWires[1].DB_MAX_OUTPUT_PORT_TYPE
+BusWires[2] <= BusWires[2].DB_MAX_OUTPUT_PORT_TYPE
+BusWires[3] <= BusWires[3].DB_MAX_OUTPUT_PORT_TYPE
+BusWires[4] <= BusWires[4].DB_MAX_OUTPUT_PORT_TYPE
+BusWires[5] <= BusWires[5].DB_MAX_OUTPUT_PORT_TYPE
+BusWires[6] <= BusWires[6].DB_MAX_OUTPUT_PORT_TYPE
+BusWires[7] <= BusWires[7].DB_MAX_OUTPUT_PORT_TYPE
+BusWires[8] <= BusWires[8].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Proc|Reg:IR
