@@ -8,10 +8,12 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 	output [8:0] BusWires; // Sinais de saída e barramento principal.
 
 	// Definição de parametros para melhor controle dos bits.
-	parameter T0 = 2'b00, // Tempo 0.
-			  T1 = 2'b01, // Tempo 1.
-			  T2 = 2'b10, // Tempo 2.
-			  T3 = 2'b11, // Tempo 3.
+	parameter T0 = 3'b000, // Tempo 0.
+			  T1_1 = 3'b001, // Tempo 1.
+			  T1_2 = 3'b010, // Tempo 2.
+			  T1_3 = 3'b011, // Tempo 3.
+			  T2 = 3'b100,
+			  T3 = 3'b101,
 			  MV = 3'b000, // Opcode da instrução move.
 			  MVI = 3'b001, // Opcode da instrução move immediate.
 			  ADD = 3'b010, // Opcode da instrução add.
@@ -21,7 +23,7 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 			  DefaultMux = 4'b1111; // Usado para setar a saída do mux para zero.
 
 	// Variável da máquina de estados.
-	reg [1:0] Tstep_Q;
+	reg [2:0] Tstep_Q;
 
 	// Sinais de controle de escrita de todos os registradores e do decodificador.
 	reg enableIR, enableA, enableG, enableDec; // Habilita IR, A, G e decodificador.
@@ -72,11 +74,48 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 	Decoder3x8 addressRX (.En(enableDec), .In(outputIR[5:3]), .Out(enableRegX));
 
 	// Controle das saídas da FSM.
-	always @(posedge Clock
+	
+	always @(posedge Clock or negedge Resetn)
 		begin
 			if(!Resetn)
 				begin
-					Tstep_Q = T0;                                               // Transita para T0
+					Tstep_Q = T0;
+				end
+			else
+				begin
+					case(Tstep_Q)
+						T0:
+							if(!Run)
+								begin
+									Tstep_Q = T0;
+								end
+							else
+								begin
+									if(outputIR[8:6] == MV)
+										Tstep_Q = T1_1;
+									else if(outputIR[8:6] == MVI)
+										Tstep_Q = T1_2;
+									else if(outputIR[8:6] >= 3'b010)
+										Tstep_Q = T1_3;
+								end
+						T1_1:
+							Tstep_Q = T0;
+						T1_2:
+							Tstep_Q = T0;
+						T1_3:
+							Tstep_Q = T2;
+						T2:
+							Tstep_Q = T3;
+						T3:
+							Tstep_Q = T0;
+					endcase
+				end
+		end
+		
+	always @(Tstep_Q)
+		begin
+			if(!Resetn)
+				begin
 					enableIR = 1'b1;                                            // Habilita IR
 					enableA = 1'b0;                                             // Desabilita A
 					enableG = 1'b0;                                             // Desabilita G
@@ -100,77 +139,45 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 						de instruções), habilida os decodificadores 3 para 8 (acionando o sinal EnableDec), e transita para o estado T1.
 						*/
 							begin
-								if (!Run)
-									Tstep_Q = T0;                               // Volta para T0, caso não tenha sido solicitada a execução
+								if(!Run)
+									begin
+										Done = 1'b1;
+									end
 								else
 									begin
 										Done = 1'b0;                            // Sinaliza que não está pronto (afinal, ele acabou de começar)
-										enableIR = 1'b1;                        // Habilita IR
-										enableDec = 1'b1;                       // Habilita o decodificador 3 para 8
-										Tstep_Q = T1;                           // Transita para T1
 									end
+								enableIR = 1'b1;                        // Habilita IR
+								enableDec = 1'b1;                       // Habilita o decodificador 3 para 8
 							end
-						T1 :
+						T1_1 :
 						/* Uma vez estando em T1, a FSM desabilita o recebimento de novas instruções pelo IR através do sinal WIRin,
 						e prossegue com o processamento.
 						*/
 							begin
-								enableIR = 1'b0;                                // Como ele começou, ele desabilita a entrada de IR
-								case (outputIR[8:6])
-									MV :
-									/* Operação move:
-									Essa operação move um dado de um determinado re gistrador Y para um determinado registrador X,
-									habilitando a passagem do dado de Y pelo multi plexador, e habilitando o recebimento do dado do
-									barramento pelo registrador X. Ao término, o processador sinaliza o término da operação e a
-									FSM retorna para o estado inicial.
-									*/
-										begin
-											ctrlMux = outputIR[2:0];            // O mux tem sua saída setada para o endereço de Y
-											enableR = enableRegX;               // O decodificador habilita a entrada para o endereço X
-											enableIR = 1'b1;
-											Done = 1'b1;                        // Sinaliza que terminou (em seguida, transitaremos de volta para T0)
-										end
-									MVI :
-									/* Operação move immediate:
-									Essa operação move uma constante fornecida na entrada DIN para um determinado registrador X,
-									habilitando a passagem do dado de DIN pelo multiplexador, e habilitando o recebimento do dado
-									do barramento pelo registrador X. Ao término, o processador sinaliza o término da operação e a
-									FSM retorna para o estado inicial.
-									*/
-										begin
-											ctrlMux = DINMuxOut;                // O mux tem sua saída setada para a constante DIN
-											enableR = enableRegX;               // O decodificador habilita a entrada para o endereço X
-											enableIR = 1'b1;
-											Done = 1'b1;                        // Sinaliza que terminou (em seguida, transitaremos de volta para T0)
-										end
-									ADD :
-									/* Operação add (parte 1 de 3):
-									Essa operação, dividida em três partes, realiza a soma de um dado de um determinado registrador
-									X com um dado de um determinado registrador Y, e a armazena no registrador X. Nessa primeira parte,
-									a FSM habilita a passagem do dado de X para o registrador A, possibilitando que, posteriormente,
-									esse dado seja somado com o dado do registrador Y, em T2. Feito isto, a FSM transita para o estado T2.
-									*/
-										begin
-											ctrlMux = outputIR[5:3];            // O mux tem sua saída setada para o endereço de X
-											enableA = 1'b1;						// Habilita A
-										end
-									SUB :
-									/* Operação sub (parte 1 de 3):
-									Essa operação, dividida em três partes, realiza a subtração de um dado de um determinado registrador
-									X com um dado de um determinado registrador Y, e a armazena no	registrador X. Nessa primeira parte,
-									a FSM habilita a passagem do dado de X para o registrador A, possibilitando que, posteriormente,
-									esse dado seja subtraído com o dado do registrador Y, em T2. Feito isto, a FSM transita para o estado T2.
-									*/
-									 											// PERCEBA QUE ESTA EXECUÇÃO É EXATAMENTE IGUAL A ANTERIOR
-										begin
-											ctrlMux = outputIR[5:3];            // O mux tem sua saída setada para o endereço de X
-											enableA = 1'b1;						// Habilita A
-										end
-								endcase
-								if (outputIR[8:6] >= 3'b010)					// Use a lógica: as operações MV e MVI são as primeiras e únicas
-									Tstep_Q = T2;								// que só prosseguem até T1, Então, qualquer coisa maior que elas
-								else                                            // transitará para T2 e prosseguirá. É isto que esse "if" faz.
-									Tstep_Q = T0;								// (dúvidas nessa parte? pergunte a Alfredo)
+								enableIR = 1'b0;
+								ctrlMux = outputIR[2:0];            // O mux tem sua saída setada para o endereço de Y
+								enableR = enableRegX;               // O decodificador habilita a entrada para o endereço X
+								enableIR = 1'b1;
+								Done = 1'b1;                        // Sinaliza que terminou (em seguida, transitaremos de volta para T0)
+							end
+						T1_2 :
+							begin
+								ctrlMux = DINMuxOut;                // O mux tem sua saída setada para a constante DIN
+								enableR = enableRegX;               // O decodificador habilita a entrada para o endereço X
+								enableIR = 1'b1;
+								Done = 1'b1;                        // Sinaliza que terminou (em seguida, transitaremos de volta para T0)
+							end
+						T1_3 :
+						/* Operação add (parte 1 de 3):
+						Essa operação, dividida em três partes, realiza a soma de um dado de um determinado registrador
+						X com um dado de um determinado registrador Y, e a armazena no registrador X. Nessa primeira parte,
+						a FSM habilita a passagem do dado de X para o registrador A, possibilitando que, posteriormente,
+						esse dado seja somado com o dado do registrador Y, em T2. Feito isto, a FSM transita para o estado T2.
+						*/
+							begin
+								ctrlMux = outputIR[5:3];            // O mux tem sua saída setada para o endereço de X
+								enableA = 1'b1;						// Habilita A
 							end
 						T2 :
 						/* Operação add e sub (parte 2 de 3):
@@ -182,7 +189,6 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 								ctrlMux = outputIR[2:0];						// O mux tem sua saída setada para o endereço de Y
 								enableG = 1'b1;									// Habilita G
 								opcodeALU = outputIR[8:6];						// A ULA recebe a instrução solicitada (soma ou subtração)
-								Tstep_Q = T3;									// Transita para T3
 							end
 						T3 :
 						/* Operação add e sub (parte 3 de 3):
@@ -196,7 +202,6 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 								enableR = enableRegX;							// O decodificador habilita a entrada para o endereço X
 								Done = 1'b1;									// Sinaliza que terminou
 								enableIR = 1'b1;
-								Tstep_Q = T0;									// Transita para T0
 							end
 				endcase
 		end

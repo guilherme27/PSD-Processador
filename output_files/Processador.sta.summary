@@ -2,100 +2,340 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow 1100mV 85C Model Setup 'enableDec'
-Slack : -5.476
-TNS   : -41.399
-
 Type  : Slow 1100mV 85C Model Setup 'Clock'
-Slack : -4.075
-TNS   : -244.536
+Slack : -6.384
+TNS   : -418.910
+
+Type  : Slow 1100mV 85C Model Setup 'Tstep_Q.T0'
+Slack : -5.872
+TNS   : -22.613
+
+Type  : Slow 1100mV 85C Model Setup 'enableDec'
+Slack : -5.688
+TNS   : -41.945
+
+Type  : Slow 1100mV 85C Model Setup 'Tstep_Q.T1_3'
+Slack : -3.690
+TNS   : -5.569
+
+Type  : Slow 1100mV 85C Model Setup 'Resetn'
+Slack : -2.947
+TNS   : -7.040
+
+Type  : Slow 1100mV 85C Model Hold 'Resetn'
+Slack : -3.434
+TNS   : -25.773
 
 Type  : Slow 1100mV 85C Model Hold 'Clock'
-Slack : -3.066
-TNS   : -18.141
+Slack : -2.773
+TNS   : -86.079
+
+Type  : Slow 1100mV 85C Model Hold 'Tstep_Q.T0'
+Slack : -0.745
+TNS   : -4.405
+
+Type  : Slow 1100mV 85C Model Hold 'Tstep_Q.T1_3'
+Slack : -0.523
+TNS   : -2.485
 
 Type  : Slow 1100mV 85C Model Hold 'enableDec'
-Slack : 3.781
+Slack : 3.568
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'Tstep_Q.T0'
+Slack : -2.929
+TNS   : -10.422
+
+Type  : Slow 1100mV 85C Model Recovery 'Clock'
+Slack : -2.600
+TNS   : -4.982
+
+Type  : Slow 1100mV 85C Model Recovery 'Tstep_Q.T1_3'
+Slack : -2.375
+TNS   : -2.375
+
+Type  : Slow 1100mV 85C Model Removal 'Clock'
+Slack : -1.328
+TNS   : -5.309
+
+Type  : Slow 1100mV 85C Model Removal 'Tstep_Q.T1_3'
+Slack : 0.512
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'Tstep_Q.T0'
+Slack : 1.017
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Clock'
 Slack : -0.394
-TNS   : -63.400
+TNS   : -51.595
 
-Type  : Slow 1100mV 85C Model Minimum Pulse Width 'enableDec'
-Slack : 0.421
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Resetn'
+Slack : -0.019
+TNS   : -0.019
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Tstep_Q.T0'
+Slack : 0.194
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Setup 'enableDec'
-Slack : -5.620
-TNS   : -42.325
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Tstep_Q.T1_3'
+Slack : 0.200
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'enableDec'
+Slack : 0.242
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'Tstep_Q.T0'
+Slack : -5.993
+TNS   : -22.851
 
 Type  : Slow 1100mV 0C Model Setup 'Clock'
-Slack : -3.893
-TNS   : -236.579
+Slack : -5.905
+TNS   : -401.638
+
+Type  : Slow 1100mV 0C Model Setup 'enableDec'
+Slack : -5.695
+TNS   : -42.704
+
+Type  : Slow 1100mV 0C Model Setup 'Tstep_Q.T1_3'
+Slack : -3.776
+TNS   : -5.850
+
+Type  : Slow 1100mV 0C Model Setup 'Resetn'
+Slack : -3.043
+TNS   : -7.445
+
+Type  : Slow 1100mV 0C Model Hold 'Resetn'
+Slack : -3.370
+TNS   : -25.536
 
 Type  : Slow 1100mV 0C Model Hold 'Clock'
-Slack : -3.142
-TNS   : -18.537
+Slack : -2.860
+TNS   : -97.065
+
+Type  : Slow 1100mV 0C Model Hold 'Tstep_Q.T0'
+Slack : -0.755
+TNS   : -4.738
+
+Type  : Slow 1100mV 0C Model Hold 'Tstep_Q.T1_3'
+Slack : -0.471
+TNS   : -2.344
 
 Type  : Slow 1100mV 0C Model Hold 'enableDec'
-Slack : 3.787
+Slack : 3.640
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'Tstep_Q.T0'
+Slack : -2.910
+TNS   : -10.350
+
+Type  : Slow 1100mV 0C Model Recovery 'Tstep_Q.T1_3'
+Slack : -2.355
+TNS   : -2.355
+
+Type  : Slow 1100mV 0C Model Recovery 'Clock'
+Slack : -2.301
+TNS   : -4.376
+
+Type  : Slow 1100mV 0C Model Removal 'Clock'
+Slack : -1.473
+TNS   : -5.887
+
+Type  : Slow 1100mV 0C Model Removal 'Tstep_Q.T1_3'
+Slack : 0.484
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'Tstep_Q.T0'
+Slack : 0.979
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Clock'
 Slack : -0.394
-TNS   : -67.424
+TNS   : -55.135
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Resetn'
+Slack : -0.026
+TNS   : -0.026
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Tstep_Q.T0'
+Slack : 0.183
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Tstep_Q.T1_3'
+Slack : 0.211
+TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'enableDec'
-Slack : 0.382
+Slack : 0.256
 TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Setup 'enableDec'
-Slack : -2.711
-TNS   : -20.413
 
 Type  : Fast 1100mV 85C Model Setup 'Clock'
-Slack : -2.709
-TNS   : -101.337
+Slack : -4.542
+TNS   : -258.486
+
+Type  : Fast 1100mV 85C Model Setup 'enableDec'
+Slack : -2.923
+TNS   : -20.704
+
+Type  : Fast 1100mV 85C Model Setup 'Tstep_Q.T0'
+Slack : -2.887
+TNS   : -10.841
+
+Type  : Fast 1100mV 85C Model Setup 'Tstep_Q.T1_3'
+Slack : -1.509
+TNS   : -1.509
+
+Type  : Fast 1100mV 85C Model Setup 'Resetn'
+Slack : -1.159
+TNS   : -2.293
+
+Type  : Fast 1100mV 85C Model Hold 'Resetn'
+Slack : -2.295
+TNS   : -17.605
 
 Type  : Fast 1100mV 85C Model Hold 'Clock'
-Slack : -1.497
-TNS   : -8.818
+Slack : -1.502
+TNS   : -44.307
+
+Type  : Fast 1100mV 85C Model Hold 'Tstep_Q.T0'
+Slack : -0.388
+TNS   : -2.242
+
+Type  : Fast 1100mV 85C Model Hold 'Tstep_Q.T1_3'
+Slack : -0.088
+TNS   : -0.088
 
 Type  : Fast 1100mV 85C Model Hold 'enableDec'
-Slack : 2.317
+Slack : 2.065
 TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'Clock'
+Slack : -2.071
+TNS   : -3.985
+
+Type  : Fast 1100mV 85C Model Recovery 'Tstep_Q.T1_3'
+Slack : -1.412
+TNS   : -1.412
+
+Type  : Fast 1100mV 85C Model Recovery 'Tstep_Q.T0'
+Slack : -1.279
+TNS   : -4.449
+
+Type  : Fast 1100mV 85C Model Removal 'Clock'
+Slack : -0.784
+TNS   : -3.135
+
+Type  : Fast 1100mV 85C Model Removal 'Tstep_Q.T1_3'
+Slack : 0.249
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'Tstep_Q.T0'
+Slack : 0.814
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Resetn'
+Slack : -0.232
+TNS   : -2.225
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Clock'
-Slack : -0.085
-TNS   : -9.567
+Slack : -0.084
+TNS   : -7.777
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Tstep_Q.T0'
+Slack : 0.213
+TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'enableDec'
-Slack : 0.460
+Slack : 0.297
 TNS   : 0.000
 
-Type  : Fast 1100mV 0C Model Setup 'enableDec'
-Slack : -2.617
-TNS   : -19.709
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Tstep_Q.T1_3'
+Slack : 0.326
+TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'Clock'
-Slack : -2.130
-TNS   : -83.542
+Slack : -3.918
+TNS   : -221.612
+
+Type  : Fast 1100mV 0C Model Setup 'Tstep_Q.T0'
+Slack : -2.773
+TNS   : -10.420
+
+Type  : Fast 1100mV 0C Model Setup 'enableDec'
+Slack : -2.762
+TNS   : -19.912
+
+Type  : Fast 1100mV 0C Model Setup 'Tstep_Q.T1_3'
+Slack : -1.463
+TNS   : -1.463
+
+Type  : Fast 1100mV 0C Model Setup 'Resetn'
+Slack : -1.046
+TNS   : -2.103
+
+Type  : Fast 1100mV 0C Model Hold 'Resetn'
+Slack : -2.216
+TNS   : -17.022
 
 Type  : Fast 1100mV 0C Model Hold 'Clock'
-Slack : -1.471
-TNS   : -8.660
+Slack : -1.510
+TNS   : -48.771
+
+Type  : Fast 1100mV 0C Model Hold 'Tstep_Q.T0'
+Slack : -0.357
+TNS   : -2.103
+
+Type  : Fast 1100mV 0C Model Hold 'Tstep_Q.T1_3'
+Slack : -0.022
+TNS   : -0.022
 
 Type  : Fast 1100mV 0C Model Hold 'enableDec'
-Slack : 2.255
+Slack : 2.069
 TNS   : 0.000
 
+Type  : Fast 1100mV 0C Model Recovery 'Clock'
+Slack : -1.750
+TNS   : -3.366
+
+Type  : Fast 1100mV 0C Model Recovery 'Tstep_Q.T1_3'
+Slack : -1.393
+TNS   : -1.393
+
+Type  : Fast 1100mV 0C Model Recovery 'Tstep_Q.T0'
+Slack : -1.231
+TNS   : -4.309
+
+Type  : Fast 1100mV 0C Model Removal 'Clock'
+Slack : -0.807
+TNS   : -3.227
+
+Type  : Fast 1100mV 0C Model Removal 'Tstep_Q.T1_3'
+Slack : 0.290
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'Tstep_Q.T0'
+Slack : 0.854
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Resetn'
+Slack : -0.195
+TNS   : -2.002
+
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Clock'
-Slack : -0.083
-TNS   : -9.423
+Slack : -0.082
+TNS   : -7.672
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Tstep_Q.T0'
+Slack : 0.259
+TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'enableDec'
-Slack : 0.477
+Slack : 0.328
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Tstep_Q.T1_3'
+Slack : 0.360
 TNS   : 0.000
 
 ------------------------------------------------------------

@@ -84,11 +84,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "Clock",
+					"name" : "Resetn",
 					"strict" : false
 				},
 				{
-					"name" : "Resetn",
+					"name" : "Clock",
 					"strict" : false
 				}
 			]
