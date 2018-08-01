@@ -1,5 +1,5 @@
 EDA Netlist Writer report for Processador
-Tue Jul 24 16:36:28 2018
+Tue Jul 31 12:01:55 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Tue Jul 24 16:36:28 2018 ;
+; EDA Netlist Writer Status ; Successful - Tue Jul 31 12:01:55 2018 ;
 ; Revision Name             ; Processador                           ;
 ; Top-level Entity Name     ; Proc                                  ;
 ; Family                    ; Cyclone V                             ;
@@ -93,14 +93,14 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Tue Jul 24 16:36:27 2018
+    Info: Processing started: Tue Jul 31 12:01:53 2018
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=/home/alfredo/Desktop/PSD-Processador/simulation/qsim/ Processador -c Processador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file Processador.vo in folder "/home/alfredo/Desktop/PSD-Processador/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 1126 megabytes
-    Info: Processing ended: Tue Jul 24 16:36:28 2018
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Processing ended: Tue Jul 31 12:01:55 2018
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
 
 
