@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Processador
-Tue Jul 31 11:41:44 2018
+Wed Aug  1 13:42:56 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -14,24 +14,22 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. State Machine - |Proc|Tstep_Q
-  9. User-Specified and Inferred Latches
- 10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Parameter Settings for User Entity Instance: Top-level Entity: |Proc
- 14. Port Connectivity Checks: "Multiplexer:multiplexer"
- 15. Port Connectivity Checks: "Reg:reg_7"
- 16. Port Connectivity Checks: "Reg:reg_6"
- 17. Port Connectivity Checks: "Reg:reg_5"
- 18. Port Connectivity Checks: "Reg:reg_4"
- 19. Port Connectivity Checks: "Reg:reg_3"
- 20. Port Connectivity Checks: "Reg:reg_2"
- 21. Port Connectivity Checks: "Reg:reg_1"
- 22. Port Connectivity Checks: "Reg:reg_0"
- 23. Port Connectivity Checks: "Reg:IR"
- 24. Post-Synthesis Netlist Statistics for Top Partition
- 25. Elapsed Time Per Partition
- 26. Analysis & Synthesis Messages
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: Top-level Entity: |Proc
+ 13. Port Connectivity Checks: "Multiplexer:multiplexer"
+ 14. Port Connectivity Checks: "Reg:reg_7"
+ 15. Port Connectivity Checks: "Reg:reg_6"
+ 16. Port Connectivity Checks: "Reg:reg_5"
+ 17. Port Connectivity Checks: "Reg:reg_4"
+ 18. Port Connectivity Checks: "Reg:reg_3"
+ 19. Port Connectivity Checks: "Reg:reg_2"
+ 20. Port Connectivity Checks: "Reg:reg_1"
+ 21. Port Connectivity Checks: "Reg:reg_0"
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
 
 
 
@@ -57,7 +55,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Jul 31 11:41:44 2018       ;
+; Analysis & Synthesis Status     ; Successful - Wed Aug  1 13:42:56 2018       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; Processador                                 ;
 ; Top-level Entity Name           ; Proc                                        ;
@@ -195,14 +193,14 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimate of Logic utilization (ALMs needed) ; 77          ;
+; Estimate of Logic utilization (ALMs needed) ; 69          ;
 ;                                             ;             ;
-; Combinational ALUT usage for logic          ; 104         ;
+; Combinational ALUT usage for logic          ; 83          ;
 ;     -- 7 input functions                    ; 0           ;
-;     -- 6 input functions                    ; 35          ;
-;     -- 5 input functions                    ; 21          ;
-;     -- 4 input functions                    ; 11          ;
-;     -- <=3 input functions                  ; 37          ;
+;     -- 6 input functions                    ; 27          ;
+;     -- 5 input functions                    ; 22          ;
+;     -- 4 input functions                    ; 15          ;
+;     -- <=3 input functions                  ; 19          ;
 ;                                             ;             ;
 ; Dedicated logic registers                   ; 97          ;
 ;                                             ;             ;
@@ -212,8 +210,8 @@ refer to the applicable agreement for further details.
 ;                                             ;             ;
 ; Maximum fan-out node                        ; Clock~input ;
 ; Maximum fan-out                             ; 97          ;
-; Total fan-out                               ; 804         ;
-; Average fan-out                             ; 3.28        ;
+; Total fan-out                               ; 722         ;
+; Average fan-out                             ; 3.22        ;
 +---------------------------------------------+-------------+
 
 
@@ -222,10 +220,9 @@ refer to the applicable agreement for further details.
 +------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name           ; Entity Name ; Library Name ;
 +------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------+-------------+--------------+
-; |Proc                        ; 104 (31)            ; 97 (6)                    ; 0                 ; 0          ; 22   ; 0            ; |Proc                         ; Proc        ; work         ;
+; |Proc                        ; 83 (31)             ; 97 (6)                    ; 0                 ; 0          ; 22   ; 0            ; |Proc                         ; Proc        ; work         ;
 ;    |ALU:alu|                 ; 12 (12)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|ALU:alu                 ; ALU         ; work         ;
-;    |Decoder3x8:addressRX|    ; 16 (16)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Decoder3x8:addressRX    ; Decoder3x8  ; work         ;
-;    |Multiplexer:multiplexer| ; 45 (45)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Multiplexer:multiplexer ; Multiplexer ; work         ;
+;    |Multiplexer:multiplexer| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Multiplexer:multiplexer ; Multiplexer ; work         ;
 ;    |Reg:A|                   ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:A                   ; Reg         ; work         ;
 ;    |Reg:G|                   ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:G                   ; Reg         ; work         ;
 ;    |Reg:IR|                  ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:IR                  ; Reg         ; work         ;
@@ -256,51 +253,14 @@ Encoding Type:  One-Hot
 +--------------+------------+------------+--------------+--------------+--------------+------------+
 
 
-+----------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                ;
-+-----------------------------------------------------+---------------------+------------------------+
-; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
-+-----------------------------------------------------+---------------------+------------------------+
-; Done$latch                                          ; Done                ; yes                    ;
-; ctrlMux[0]                                          ; Tstep_Q.T0          ; yes                    ;
-; ctrlMux[1]                                          ; Tstep_Q.T0          ; yes                    ;
-; ctrlMux[3]                                          ; Tstep_Q.T0          ; yes                    ;
-; ctrlMux[2]                                          ; Tstep_Q.T0          ; yes                    ;
-; enableR[0]                                          ; enableR[1]          ; yes                    ;
-; enableR[1]                                          ; enableR[1]          ; yes                    ;
-; enableR[2]                                          ; enableR[1]          ; yes                    ;
-; enableR[3]                                          ; enableR[1]          ; yes                    ;
-; enableR[4]                                          ; enableR[1]          ; yes                    ;
-; enableR[5]                                          ; enableR[1]          ; yes                    ;
-; enableR[6]                                          ; enableR[1]          ; yes                    ;
-; enableR[7]                                          ; enableR[1]          ; yes                    ;
-; opcodeALU[2]                                        ; opcodeALU[2]        ; yes                    ;
-; opcodeALU[1]                                        ; opcodeALU[2]        ; yes                    ;
-; enableG                                             ; GND                 ; yes                    ;
-; Decoder3x8:addressRX|Out[0]                         ; enableDec           ; yes                    ;
-; Decoder3x8:addressRX|Out[1]                         ; enableDec           ; yes                    ;
-; Decoder3x8:addressRX|Out[2]                         ; enableDec           ; yes                    ;
-; Decoder3x8:addressRX|Out[3]                         ; enableDec           ; yes                    ;
-; Decoder3x8:addressRX|Out[4]                         ; enableDec           ; yes                    ;
-; Decoder3x8:addressRX|Out[5]                         ; enableDec           ; yes                    ;
-; Decoder3x8:addressRX|Out[6]                         ; enableDec           ; yes                    ;
-; Decoder3x8:addressRX|Out[7]                         ; enableDec           ; yes                    ;
-; opcodeALU[0]                                        ; opcodeALU[2]        ; yes                    ;
-; enableDec                                           ; GND                 ; yes                    ;
-; enableA                                             ; GND                 ; yes                    ;
-; Number of user-specified and inferred latches = 27  ;                     ;                        ;
-+-----------------------------------------------------+---------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
-
-
 +------------------------------------------------------------+
 ; Registers Removed During Synthesis                         ;
 +---------------------------------------+--------------------+
 ; Register name                         ; Reason for Removal ;
 +---------------------------------------+--------------------+
+; Tstep_Q~2                             ; Lost fanout        ;
+; Tstep_Q~3                             ; Lost fanout        ;
 ; Tstep_Q~4                             ; Lost fanout        ;
-; Tstep_Q~5                             ; Lost fanout        ;
-; Tstep_Q~6                             ; Lost fanout        ;
 ; Total Number of Removed Registers = 3 ;                    ;
 +---------------------------------------+--------------------+
 
@@ -313,9 +273,9 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; Total registers                              ; 97    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 9     ;
-; Number of registers using Asynchronous Clear ; 6     ;
+; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 82    ;
+; Number of registers using Clock Enable       ; 91    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -325,8 +285,10 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Proc|Selector3                    ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Proc|opcodeALU[1]                 ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Proc|enableR[3]                   ;
 ; 16:1               ; 8 bits    ; 80 LEs        ; 64 LEs               ; 16 LEs                 ; No         ; |Proc|Multiplexer:multiplexer|Mux8 ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Proc|ctrlMux[2]                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
 
 
@@ -440,40 +402,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
 
 
-+----------------------------------------+
-; Port Connectivity Checks: "Reg:IR"     ;
-+------+-------+----------+--------------+
-; Port ; Type  ; Severity ; Details      ;
-+------+-------+----------+--------------+
-; En   ; Input ; Info     ; Stuck at VCC ;
-+------+-------+----------+--------------+
-
-
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; arriav_ff             ; 97                          ;
-;     CLR               ; 6                           ;
-;     ENA               ; 73                          ;
+;     ENA               ; 82                          ;
 ;     ENA SLD           ; 9                           ;
-;     plain             ; 9                           ;
-; arriav_lcell_comb     ; 104                         ;
+;     plain             ; 6                           ;
+; arriav_lcell_comb     ; 83                          ;
 ;     arith             ; 10                          ;
-;         1 data inputs ; 1                           ;
 ;         4 data inputs ; 1                           ;
-;         5 data inputs ; 8                           ;
-;     normal            ; 94                          ;
-;         2 data inputs ; 5                           ;
-;         3 data inputs ; 31                          ;
-;         4 data inputs ; 10                          ;
+;         5 data inputs ; 9                           ;
+;     normal            ; 73                          ;
+;         2 data inputs ; 11                          ;
+;         3 data inputs ; 8                           ;
+;         4 data inputs ; 14                          ;
 ;         5 data inputs ; 13                          ;
-;         6 data inputs ; 35                          ;
+;         6 data inputs ; 27                          ;
 ; boundary_port         ; 22                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 3.80                        ;
-; Average LUT depth     ; 2.40                        ;
+; Max LUT depth         ; 6.80                        ;
+; Average LUT depth     ; 4.41                        ;
 +-----------------------+-----------------------------+
 
 
@@ -482,7 +433,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:03     ;
 +----------------+--------------+
 
 
@@ -492,80 +443,43 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Tue Jul 31 11:41:23 2018
+    Info: Processing started: Wed Aug  1 13:42:13 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Processador -c Processador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 5 design units, including 5 entities, in source file Proc.v
     Info (12023): Found entity 1: Proc File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 1
-    Info (12023): Found entity 2: Reg File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 220
-    Info (12023): Found entity 3: Multiplexer File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 238
-    Info (12023): Found entity 4: ALU File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 265
-    Info (12023): Found entity 5: Decoder3x8 File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 285
+    Info (12023): Found entity 2: Reg File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 257
+    Info (12023): Found entity 3: Multiplexer File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 275
+    Info (12023): Found entity 4: ALU File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 302
+    Info (12023): Found entity 5: Decoder3x8 File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 322
 Info (12127): Elaborating entity "Proc" for the top level hierarchy
 Warning (10235): Verilog HDL Always Construct warning at Proc.v(123): variable "Resetn" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 123
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(148): variable "Run" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 148
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(165): variable "outputIR" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 165
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(166): variable "enableRegX" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 166
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(173): variable "enableRegX" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 173
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(185): variable "outputIR" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 185
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(196): variable "outputIR" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 196
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(198): variable "outputIR" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 198
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(210): variable "enableRegX" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 210
-Warning (10240): Verilog HDL Always Construct warning at Proc.v(121): inferring latch(es) for variable "enableIR", which holds its previous value in one or more paths through the always construct File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 121
-Warning (10240): Verilog HDL Always Construct warning at Proc.v(121): inferring latch(es) for variable "enableA", which holds its previous value in one or more paths through the always construct File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 121
-Warning (10240): Verilog HDL Always Construct warning at Proc.v(121): inferring latch(es) for variable "enableG", which holds its previous value in one or more paths through the always construct File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 121
-Warning (10240): Verilog HDL Always Construct warning at Proc.v(121): inferring latch(es) for variable "ctrlMux", which holds its previous value in one or more paths through the always construct File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 121
-Warning (10240): Verilog HDL Always Construct warning at Proc.v(121): inferring latch(es) for variable "enableDec", which holds its previous value in one or more paths through the always construct File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 121
-Warning (10240): Verilog HDL Always Construct warning at Proc.v(121): inferring latch(es) for variable "Done", which holds its previous value in one or more paths through the always construct File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 121
-Warning (10240): Verilog HDL Always Construct warning at Proc.v(121): inferring latch(es) for variable "enableR", which holds its previous value in one or more paths through the always construct File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 121
-Warning (10240): Verilog HDL Always Construct warning at Proc.v(121): inferring latch(es) for variable "opcodeALU", which holds its previous value in one or more paths through the always construct File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 121
-Info (10041): Inferred latch for "opcodeALU[0]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "opcodeALU[1]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "opcodeALU[2]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "enableR[0]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "enableR[1]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "enableR[2]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "enableR[3]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "enableR[4]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "enableR[5]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "enableR[6]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "enableR[7]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "Done" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "enableDec" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "ctrlMux[0]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "ctrlMux[1]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "ctrlMux[2]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "ctrlMux[3]" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "enableG" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "enableA" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
-Info (10041): Inferred latch for "enableIR" at Proc.v(141) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 141
+Warning (10235): Verilog HDL Always Construct warning at Proc.v(157): variable "Run" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 157
+Warning (10235): Verilog HDL Always Construct warning at Proc.v(179): variable "outputIR" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 179
+Warning (10235): Verilog HDL Always Construct warning at Proc.v(180): variable "enableRegX" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 180
+Warning (10235): Verilog HDL Always Construct warning at Proc.v(190): variable "enableRegX" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 190
+Warning (10235): Verilog HDL Always Construct warning at Proc.v(212): variable "outputIR" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 212
+Warning (10235): Verilog HDL Always Construct warning at Proc.v(229): variable "outputIR" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 229
+Warning (10235): Verilog HDL Always Construct warning at Proc.v(231): variable "outputIR" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 231
+Warning (10235): Verilog HDL Always Construct warning at Proc.v(247): variable "enableRegX" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 247
 Info (12128): Elaborating entity "Reg" for hierarchy "Reg:IR" File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 51
 Info (12128): Elaborating entity "Multiplexer" for hierarchy "Multiplexer:multiplexer" File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 68
 Info (12128): Elaborating entity "ALU" for hierarchy "ALU:alu" File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 71
 Info (12128): Elaborating entity "Decoder3x8" for hierarchy "Decoder3x8:addressRX" File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 74
-Warning (10240): Verilog HDL Always Construct warning at Proc.v(297): inferring latch(es) for variable "Out", which holds its previous value in one or more paths through the always construct File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 297
-Info (10041): Inferred latch for "Out[0]" at Proc.v(297) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 297
-Info (10041): Inferred latch for "Out[1]" at Proc.v(297) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 297
-Info (10041): Inferred latch for "Out[2]" at Proc.v(297) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 297
-Info (10041): Inferred latch for "Out[3]" at Proc.v(297) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 297
-Info (10041): Inferred latch for "Out[4]" at Proc.v(297) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 297
-Info (10041): Inferred latch for "Out[5]" at Proc.v(297) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 297
-Info (10041): Inferred latch for "Out[6]" at Proc.v(297) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 297
-Info (10041): Inferred latch for "Out[7]" at Proc.v(297) File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 297
 Warning (12241): 9 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 3 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 210 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 189 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 12 input pins
     Info (21059): Implemented 10 output pins
-    Info (21061): Implemented 188 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 20 warnings
-    Info: Peak virtual memory: 1014 megabytes
-    Info: Processing ended: Tue Jul 31 11:41:44 2018
-    Info: Elapsed time: 00:00:21
-    Info: Total CPU time (on all processors): 00:00:50
+    Info (21061): Implemented 167 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
+    Info: Peak virtual memory: 1023 megabytes
+    Info: Processing ended: Wed Aug  1 13:42:56 2018
+    Info: Elapsed time: 00:00:43
+    Info: Total CPU time (on all processors): 00:01:04
 
 

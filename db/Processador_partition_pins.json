@@ -44,6 +44,14 @@
 					"strict" : false
 				},
 				{
+					"name" : "Run",
+					"strict" : false
+				},
+				{
+					"name" : "Resetn",
+					"strict" : false
+				},
+				{
 					"name" : "DIN[0]",
 					"strict" : false
 				},
@@ -77,14 +85,6 @@
 				},
 				{
 					"name" : "DIN[8]",
-					"strict" : false
-				},
-				{
-					"name" : "Run",
-					"strict" : false
-				},
-				{
-					"name" : "Resetn",
 					"strict" : false
 				},
 				{

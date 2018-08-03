@@ -74,7 +74,7 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 	Decoder3x8 addressRX (.En(enableDec), .In(outputIR[5:3]), .Out(enableRegX));
 
 	// Controle da FSM.
-	always @(posedge Clock or negedge Resetn)
+	always @(posedge Clock)
 		begin
 			if(!Resetn)
 				begin
@@ -122,7 +122,10 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 		begin
 			if(!Resetn)
 				begin
-					enableIR = 1'b1;			// Habilita IR
+					enableR = 8'b0;
+					//enableRegX = 8'b0;
+					opcodeALU = 3'b0;
+					enableIR = 1'b0;			// Habilita IR
 					enableA = 1'b0;			// Desabilita A
 					enableG = 1'b0; 			// Desabilita G
 					ctrlMux = DefaultMux;	// O mux tem sua saída setada para zero
@@ -145,6 +148,12 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 					de instruções), habilida os decodificadores 3 para 8 (acionando o sinal EnableDec), e transita para o estado T1.
 					*/
 						begin
+							enableA = 1'b0;
+							enableG = 1'b0;
+							enableR = 8'b0;
+							//enableRegX = 8'b0;
+							ctrlMux = DefaultMux;
+							opcodeALU = 3'b0;
 							if(!Run)
 								begin
 									Done = 1'b1;
@@ -162,17 +171,24 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 					e prossegue com o processamento.
 					*/
 						begin
+							enableA = 1'b0;
+							enableG = 1'b0;
+							enableDec = 1'b1;
+							opcodeALU = 3'b0;
 							enableIR = 1'b0;
 							ctrlMux = outputIR[2:0];		// O mux tem sua saída setada para o endereço de Y
 							enableR = enableRegX;			// O decodificador habilita a entrada para o endereço X
-							enableIR = 1'b1;
 							Done = 1'b1;						// Sinaliza que terminou (em seguida, transitaremos de volta para T0)
 						end
 					T1_2 :
 						begin
+							enableA = 1'b0;
+							enableG = 1'b0;
+							enableDec = 1'b1;
+							opcodeALU = 3'b0;
 							ctrlMux = DINMuxOut;          // O mux tem sua saída setada para a constante DIN
 							enableR = enableRegX;         // O decodificador habilita a entrada para o endereço X
-							enableIR = 1'b1;
+							enableIR = 1'b0;
 							Done = 1'b1;                  // Sinaliza que terminou (em seguida, transitaremos de volta para T0)
 						end
 					T1_3 :
@@ -181,8 +197,18 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 					X com um dado de um determinado registrador Y, e a armazena no registrador X. Nessa primeira parte,
 					a FSM habilita a passagem do dado de X para o registrador A, possibilitando que, posteriormente,
 					esse dado seja somado com o dado do registrador Y, em T2. Feito isto, a FSM transita para o estado T2.
+					X com um dado de um determinado registrador Y, e a armazena no registrador X. Nessa primeira parte,
+					a FSM habilita a passagem do dado de X para o registrador A, possibilitando que, posteriormente,
+					esse dado seja somado com o dado do registrador Y, em T2. Feito isto, a FSM transita para o estado T2.
 					*/
 						begin
+							Done = 1'b0;
+							enableIR = 1'b0;
+							enableG = 1'b0;
+							enableDec = 1'b1;
+							enableR = 8'b0;
+							//enableRegX = 8'b0;
+							opcodeALU = 3'b0;
 							ctrlMux = outputIR[5:3];		// O mux tem sua saída setada para o endereço de X
 							enableA = 1'b1;					// Habilita A
 						end
@@ -194,6 +220,12 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 					*/												
 																	// PELO FATO DE O PROCESSADOR REALIZAR A MESMA COISA EM T2 PARA
 						begin										// ADD E SUB, RESOLVI DEIXAR SEM O CASE VERIFICANDO A INSTRUÇÃO
+							Done = 1'b0;
+							enableIR = 1'b0;
+							enableA = 1'b0;
+							enableDec = 1'b1;
+							enableR = 8'b0;
+							//enableRegX = 8'b0;
 							ctrlMux = outputIR[2:0];		// O mux tem sua saída setada para o endereço de Y
 							enableG = 1'b1;					// Habilita G
 							opcodeALU = outputIR[8:6];		// A ULA recebe a instrução solicitada (soma ou subtração)
@@ -207,6 +239,10 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 					*/												
 																	// PELO FATO DE O PROCESSADOR REALIZAR A MESMA COISA EM T2 PARA
 						begin										// ADD E SUB, RESOLVI DEIXAR SEM O CASE VERIFICANDO A INSTRUÇÃO
+							enableA = 1'b0;
+							enableG = 1'b0;
+							enableDec = 1'b0;
+							opcodeALU = 3'b0;
 							ctrlMux = GMuxOut;				// O mux tem sua saída setada para G
 							enableR = enableRegX;			// O decodificador habilita a entrada para o endereço X
 							Done = 1'b1;						// Sinaliza que terminou
