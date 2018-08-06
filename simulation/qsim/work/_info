@@ -1,0 +1,96 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/alfredo/Desktop/PSD-Processador/simulation/qsim
+vproc
+Z1 !s110 1532178846
+!i10b 1
+!s100 mE2;<oHB=z7<k@S<Ij=5W1
+I0GGlla1TR@c:z[5`k4If93
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1532178842
+Z3 8Processador.vo
+Z4 FProcessador.vo
+Z5 L0 31
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1532178846.000000
+Z8 !s107 Processador.vo|
+Z9 !s90 -work|work|Processador.vo|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+vProc
+Z12 !s110 1533561427
+!i10b 1
+!s100 oG1;@NodI9RoJ6hBiakU11
+I46GDm]i4kVafb]E<T;a0g0
+R2
+Z13 dC:/Users/Guilherme Pereira/Desktop/proc_test/PSD-Processador/simulation/qsim
+w1533561426
+R3
+R4
+R5
+R6
+r1
+!s85 0
+31
+Z14 !s108 1533561427.000000
+R8
+R9
+!i113 1
+R10
+R11
+n@proc
+vProc_vlg_vec_tst
+R12
+!i10b 1
+!s100 Ahe[Wa10T5?NBoRa<hz8G1
+IS9ZJheVX[5X:LW6;VhU;e2
+R2
+R13
+w1533561425
+Z15 8Waveform.vwf.vt
+Z16 FWaveform.vwf.vt
+Z17 L0 29
+R6
+r1
+!s85 0
+31
+R14
+!s107 Waveform.vwf.vt|
+Z18 !s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R10
+R11
+n@proc_vlg_vec_tst
+vproc_vlg_vec_tst
+R1
+!i10b 1
+!s100 M;RDF?4]`?F9;FB=jWIYU1
+I?GiWLlzIk]fVL[V^>ICQD2
+R2
+R0
+w1532178840
+R15
+R16
+R17
+R6
+r1
+!s85 0
+31
+R7
+!s107 Waveform.vwf.vt|
+R18
+!i113 1
+R10
+R11
