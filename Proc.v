@@ -36,7 +36,7 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 	wire [8:0] inputG;
 
 	// Fios de ligação entre os registradores e o MUX.
-	wire [7:0] outputR [8:0];		// Fios de saída dos registradores R7 a R0. (dúvidas nessa parte? pergunte a Alfredo)
+	wire [8:0] outputR [7:0];		// Fios de saída dos registradores R7 a R0. (dúvidas nessa parte? pergunte a Alfredo)
 	wire [8:0] outputIR; 			// Fios de saída do registrador IR.
 	wire [8:0] outputA; 				// Fios de saída do registrador A.
 	wire [8:0] outputG; 				// Fios de saída do registrador G.
@@ -74,7 +74,7 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 	Decoder3x8 addressRX (.En(enableDec), .In(outputIR[5:3]), .Out(enableRegX));
 
 	// Controle da FSM.
-	always @(posedge Clock)
+/*	always @(posedge Clock)
 		begin
 			if(!Resetn)
 				begin
@@ -84,10 +84,11 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 				begin
 					case(Tstep_Q)
 						T0:
-							if(!Run)
+						if(!Run)
 								begin
 									Tstep_Q = T0;
 								end
+							
 							else
 								begin
 									if(outputIR[8:6] == MV)
@@ -115,22 +116,23 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 							Tstep_Q = T0;
 					endcase
 				end
-		end
+		end*/
 		
 	// Controle do processador	
-	always @(Tstep_Q)
+	always @(posedge Clock or negedge Resetn)
 		begin
 			if(!Resetn)
 				begin
 					enableR = 8'b0;
 					//enableRegX = 8'b0;
 					opcodeALU = 3'b0;
-					enableIR = 1'b0;			// Habilita IR
+					enableIR = 1'b1;			// Habilita IR ---------------- modificado
 					enableA = 1'b0;			// Desabilita A
 					enableG = 1'b0; 			// Desabilita G
 					ctrlMux = DefaultMux;	// O mux tem sua saída setada para zero
 					enableDec = 1'b0;			// Desabilita o decodificador 3 para 8
 					Done = 1'b1;				// Sinaliza que terminou
+					Tstep_Q = T0; // ------ modificado
 				end
 			else
 			/* A FSM se mantém realizando transições entre seus respectivos estados enquanto não há o reset da mesma.
@@ -141,7 +143,7 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 				/* Se não há reset, a FSM prossegue com o processamento normal. Para realização do processamento,
 				existem quatro tempos, que são ditos pelos ciclos de clock, a saber: T0, T1, T2 e T3.
 				*/
-				case (Tstep_Q)
+				case (Tstep_Q)  //  tentativa : Unique
 					T0 :
 					/* Em T0, a FSM sinaliza, desabilitando o sinal "done", que o processador está em processamento.
 					Ao mesmo tempo, armazena o conteúdo de DIN no registrador IR (acionando a entrada do registrador
@@ -156,13 +158,36 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 							opcodeALU = 3'b0;
 							if(!Run)
 								begin
+									Tstep_Q = T0;
 									Done = 1'b1;
 									enableIR = 1'b1;			// Habilita IR
 								end
 							else
 								begin
-									Done = 1'b0;				// Sinaliza que não está pronto (afinal, ele acabou de começar)
-									enableIR = 1'b0;			// Desabilita IR
+									Done = 1'b0;
+									enableIR = 1'b0;
+									case (outputIR[8:6])
+										MV:
+											Tstep_Q = T1_1;
+										MVI:
+											Tstep_Q = T1_2;
+										ADD:
+											Tstep_Q = T1_3;
+										SUB:
+											Tstep_Q = T1_3;
+										default:
+											Tstep_Q = T0;
+									endcase
+									/*if(outputIR[8:6] == MV)
+										Tstep_Q = T1_1;
+									else if(outputIR[8:6] == MVI)
+										Tstep_Q = T1_2;
+									else if(outputIR[8:6] == ADD)
+										Tstep_Q = T1_3;
+									else if(outputIR[8:6] == SUB)
+										Tstep_Q = T1_3;
+									else
+										Tstep_Q = T0;*/
 								end
 							enableDec = 1'b1;					// Habilita o decodificador 3 para 8
 						end
@@ -179,6 +204,7 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 							ctrlMux = outputIR[2:0];		// O mux tem sua saída setada para o endereço de Y
 							enableR = enableRegX;			// O decodificador habilita a entrada para o endereço X
 							Done = 1'b1;						// Sinaliza que terminou (em seguida, transitaremos de volta para T0)
+							Tstep_Q = T0;
 						end
 					T1_2 :
 						begin
@@ -190,6 +216,7 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 							enableR = enableRegX;         // O decodificador habilita a entrada para o endereço X
 							enableIR = 1'b0;
 							Done = 1'b1;                  // Sinaliza que terminou (em seguida, transitaremos de volta para T0)
+							Tstep_Q = T0;
 						end
 					T1_3 :
 					/* Operação add (parte 1 de 3):
@@ -211,6 +238,7 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 							opcodeALU = 3'b0;
 							ctrlMux = outputIR[5:3];		// O mux tem sua saída setada para o endereço de X
 							enableA = 1'b1;					// Habilita A
+							Tstep_Q = T2;
 						end
 					T2 :
 					/* Operação add e sub (parte 2 de 3):
@@ -229,6 +257,7 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 							ctrlMux = outputIR[2:0];		// O mux tem sua saída setada para o endereço de Y
 							enableG = 1'b1;					// Habilita G
 							opcodeALU = outputIR[8:6];		// A ULA recebe a instrução solicitada (soma ou subtração)
+							Tstep_Q = T3;
 						end
 					T3 :
 					/* Operação add e sub (parte 3 de 3):
@@ -247,9 +276,13 @@ module Proc (DIN, Resetn, Clock, Run, Done, BusWires);
 							enableR = enableRegX;			// O decodificador habilita a entrada para o endereço X
 							Done = 1'b1;						// Sinaliza que terminou
 							enableIR = 1'b1;
+							Tstep_Q = T0;
 						end
 					default :
-						Done = 1'b1;
+						begin
+							Done = 1'b1;
+							Tstep_Q = T0;
+						end
 				endcase
 		end
 endmodule // Processor

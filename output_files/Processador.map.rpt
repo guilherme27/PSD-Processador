@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Processador
-Wed Aug  1 13:42:56 2018
+Mon Aug 06 10:31:54 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -16,20 +16,12 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
   8. State Machine - |Proc|Tstep_Q
   9. Registers Removed During Synthesis
  10. General Register Statistics
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Parameter Settings for User Entity Instance: Top-level Entity: |Proc
- 13. Port Connectivity Checks: "Multiplexer:multiplexer"
- 14. Port Connectivity Checks: "Reg:reg_7"
- 15. Port Connectivity Checks: "Reg:reg_6"
- 16. Port Connectivity Checks: "Reg:reg_5"
- 17. Port Connectivity Checks: "Reg:reg_4"
- 18. Port Connectivity Checks: "Reg:reg_3"
- 19. Port Connectivity Checks: "Reg:reg_2"
- 20. Port Connectivity Checks: "Reg:reg_1"
- 21. Port Connectivity Checks: "Reg:reg_0"
- 22. Post-Synthesis Netlist Statistics for Top Partition
- 23. Elapsed Time Per Partition
- 24. Analysis & Synthesis Messages
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |Proc
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
 
 
 
@@ -55,13 +47,13 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Aug  1 13:42:56 2018       ;
+; Analysis & Synthesis Status     ; Successful - Mon Aug 06 10:31:54 2018       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; Processador                                 ;
 ; Top-level Entity Name           ; Proc                                        ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 97                                          ;
+; Total registers                 ; 123                                         ;
 ; Total pins                      ; 22                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
@@ -168,24 +160,24 @@ refer to the applicable agreement for further details.
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
 ; Number detected on machine ; 4           ;
-; Maximum allowed            ; 2           ;
+; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 2           ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                               ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                 ; Library ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------+---------+
-; Proc.v                           ; yes             ; User Verilog HDL File  ; /home/alfredo/Desktop/PSD-Processador/Proc.v ;         ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------+---------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                      ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                        ; Library ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+---------+
+; Proc.v                           ; yes             ; User Verilog HDL File  ; C:/Users/Guilherme Pereira/Desktop/proc_test/PSD-Processador/Proc.v ;         ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------+
@@ -193,25 +185,25 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimate of Logic utilization (ALMs needed) ; 69          ;
+; Estimate of Logic utilization (ALMs needed) ; 81          ;
 ;                                             ;             ;
-; Combinational ALUT usage for logic          ; 83          ;
+; Combinational ALUT usage for logic          ; 85          ;
 ;     -- 7 input functions                    ; 0           ;
-;     -- 6 input functions                    ; 27          ;
-;     -- 5 input functions                    ; 22          ;
-;     -- 4 input functions                    ; 15          ;
-;     -- <=3 input functions                  ; 19          ;
+;     -- 6 input functions                    ; 38          ;
+;     -- 5 input functions                    ; 23          ;
+;     -- 4 input functions                    ; 4           ;
+;     -- <=3 input functions                  ; 20          ;
 ;                                             ;             ;
-; Dedicated logic registers                   ; 97          ;
+; Dedicated logic registers                   ; 123         ;
 ;                                             ;             ;
 ; I/O pins                                    ; 22          ;
 ;                                             ;             ;
 ; Total DSP Blocks                            ; 0           ;
 ;                                             ;             ;
 ; Maximum fan-out node                        ; Clock~input ;
-; Maximum fan-out                             ; 97          ;
-; Total fan-out                               ; 722         ;
-; Average fan-out                             ; 3.22        ;
+; Maximum fan-out                             ; 123         ;
+; Total fan-out                               ; 844         ;
+; Average fan-out                             ; 3.35        ;
 +---------------------------------------------+-------------+
 
 
@@ -220,20 +212,21 @@ refer to the applicable agreement for further details.
 +------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name           ; Entity Name ; Library Name ;
 +------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------+-------------+--------------+
-; |Proc                        ; 83 (31)             ; 97 (6)                    ; 0                 ; 0          ; 22   ; 0            ; |Proc                         ; Proc        ; work         ;
+; |Proc                        ; 85 (17)             ; 123 (24)                  ; 0                 ; 0          ; 22   ; 0            ; |Proc                         ; Proc        ; work         ;
 ;    |ALU:alu|                 ; 12 (12)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|ALU:alu                 ; ALU         ; work         ;
-;    |Multiplexer:multiplexer| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Multiplexer:multiplexer ; Multiplexer ; work         ;
+;    |Decoder3x8:addressRX|    ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Decoder3x8:addressRX    ; Decoder3x8  ; work         ;
+;    |Multiplexer:multiplexer| ; 48 (48)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Multiplexer:multiplexer ; Multiplexer ; work         ;
 ;    |Reg:A|                   ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:A                   ; Reg         ; work         ;
 ;    |Reg:G|                   ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:G                   ; Reg         ; work         ;
 ;    |Reg:IR|                  ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:IR                  ; Reg         ; work         ;
-;    |Reg:reg_0|               ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_0               ; Reg         ; work         ;
-;    |Reg:reg_1|               ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_1               ; Reg         ; work         ;
-;    |Reg:reg_2|               ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_2               ; Reg         ; work         ;
-;    |Reg:reg_3|               ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_3               ; Reg         ; work         ;
-;    |Reg:reg_4|               ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_4               ; Reg         ; work         ;
-;    |Reg:reg_5|               ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_5               ; Reg         ; work         ;
-;    |Reg:reg_6|               ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_6               ; Reg         ; work         ;
-;    |Reg:reg_7|               ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_7               ; Reg         ; work         ;
+;    |Reg:reg_0|               ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_0               ; Reg         ; work         ;
+;    |Reg:reg_1|               ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_1               ; Reg         ; work         ;
+;    |Reg:reg_2|               ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_2               ; Reg         ; work         ;
+;    |Reg:reg_3|               ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_3               ; Reg         ; work         ;
+;    |Reg:reg_4|               ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_4               ; Reg         ; work         ;
+;    |Reg:reg_5|               ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_5               ; Reg         ; work         ;
+;    |Reg:reg_6|               ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_6               ; Reg         ; work         ;
+;    |Reg:reg_7|               ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Proc|Reg:reg_7               ; Reg         ; work         ;
 +------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -253,16 +246,18 @@ Encoding Type:  One-Hot
 +--------------+------------+------------+--------------+--------------+--------------+------------+
 
 
-+------------------------------------------------------------+
-; Registers Removed During Synthesis                         ;
-+---------------------------------------+--------------------+
-; Register name                         ; Reason for Removal ;
-+---------------------------------------+--------------------+
-; Tstep_Q~2                             ; Lost fanout        ;
-; Tstep_Q~3                             ; Lost fanout        ;
-; Tstep_Q~4                             ; Lost fanout        ;
-; Total Number of Removed Registers = 3 ;                    ;
-+---------------------------------------+--------------------+
++----------------------------------------------------------------+
+; Registers Removed During Synthesis                             ;
++---------------------------------------+------------------------+
+; Register name                         ; Reason for Removal     ;
++---------------------------------------+------------------------+
+; Tstep_Q~4                             ; Lost fanout            ;
+; Tstep_Q~5                             ; Lost fanout            ;
+; Tstep_Q~6                             ; Lost fanout            ;
+; enableG                               ; Merged with Tstep_Q.T3 ;
+; enableA                               ; Merged with Tstep_Q.T2 ;
+; Total Number of Removed Registers = 5 ;                        ;
++---------------------------------------+------------------------+
 
 
 +------------------------------------------------------+
@@ -270,14 +265,29 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 97    ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 123   ;
+; Number of registers using Synchronous Clear  ; 8     ;
 ; Number of registers using Synchronous Load   ; 9     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 24    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 91    ;
+; Number of registers using Clock Enable       ; 99    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; Done~reg0                              ; 1       ;
+; ctrlMux[3]                             ; 30      ;
+; ctrlMux[2]                             ; 21      ;
+; ctrlMux[0]                             ; 29      ;
+; ctrlMux[1]                             ; 29      ;
+; enableIR                               ; 9       ;
+; Total number of inverted registers = 6 ;         ;
++----------------------------------------+---------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -285,10 +295,10 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Proc|opcodeALU[1]                 ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Proc|enableR[3]                   ;
-; 16:1               ; 8 bits    ; 80 LEs        ; 64 LEs               ; 16 LEs                 ; No         ; |Proc|Multiplexer:multiplexer|Mux8 ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Proc|ctrlMux[2]                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |Proc|enableR[1]                   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |Proc|ctrlMux[2]                   ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Proc|Tstep_Q                      ;
+; 16:1               ; 9 bits    ; 90 LEs        ; 72 LEs               ; 18 LEs                 ; No         ; |Proc|Multiplexer:multiplexer|Mux8 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
 
 
@@ -314,117 +324,31 @@ Encoding Type:  One-Hot
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Multiplexer:multiplexer"                                                                                                                  ;
-+------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type  ; Severity ; Details                                                                                                                                    ;
-+------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------+
-; R0   ; Input ; Warning  ; Input port expression (8 bits) is smaller than the input port (9 bits) it drives.  Extra input bit(s) "R0[8..8]" will be connected to GND. ;
-; R1   ; Input ; Warning  ; Input port expression (8 bits) is smaller than the input port (9 bits) it drives.  Extra input bit(s) "R1[8..8]" will be connected to GND. ;
-; R2   ; Input ; Warning  ; Input port expression (8 bits) is smaller than the input port (9 bits) it drives.  Extra input bit(s) "R2[8..8]" will be connected to GND. ;
-; R3   ; Input ; Warning  ; Input port expression (8 bits) is smaller than the input port (9 bits) it drives.  Extra input bit(s) "R3[8..8]" will be connected to GND. ;
-; R4   ; Input ; Warning  ; Input port expression (8 bits) is smaller than the input port (9 bits) it drives.  Extra input bit(s) "R4[8..8]" will be connected to GND. ;
-; R5   ; Input ; Warning  ; Input port expression (8 bits) is smaller than the input port (9 bits) it drives.  Extra input bit(s) "R5[8..8]" will be connected to GND. ;
-; R6   ; Input ; Warning  ; Input port expression (8 bits) is smaller than the input port (9 bits) it drives.  Extra input bit(s) "R6[8..8]" will be connected to GND. ;
-; R7   ; Input ; Warning  ; Input port expression (8 bits) is smaller than the input port (9 bits) it drives.  Extra input bit(s) "R7[8..8]" will be connected to GND. ;
-+------+-------+----------+--------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Reg:reg_7"                                                                                                             ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Out  ; Output ; Warning  ; Output or bidir port (9 bits) is wider than the port expression (8 bits) it drives; bit(s) "Out[8..8]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Reg:reg_6"                                                                                                             ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Out  ; Output ; Warning  ; Output or bidir port (9 bits) is wider than the port expression (8 bits) it drives; bit(s) "Out[8..8]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Reg:reg_5"                                                                                                             ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Out  ; Output ; Warning  ; Output or bidir port (9 bits) is wider than the port expression (8 bits) it drives; bit(s) "Out[8..8]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Reg:reg_4"                                                                                                             ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Out  ; Output ; Warning  ; Output or bidir port (9 bits) is wider than the port expression (8 bits) it drives; bit(s) "Out[8..8]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Reg:reg_3"                                                                                                             ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Out  ; Output ; Warning  ; Output or bidir port (9 bits) is wider than the port expression (8 bits) it drives; bit(s) "Out[8..8]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Reg:reg_2"                                                                                                             ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Out  ; Output ; Warning  ; Output or bidir port (9 bits) is wider than the port expression (8 bits) it drives; bit(s) "Out[8..8]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Reg:reg_1"                                                                                                             ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Out  ; Output ; Warning  ; Output or bidir port (9 bits) is wider than the port expression (8 bits) it drives; bit(s) "Out[8..8]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Reg:reg_0"                                                                                                             ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                                ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-; Out  ; Output ; Warning  ; Output or bidir port (9 bits) is wider than the port expression (8 bits) it drives; bit(s) "Out[8..8]" have no fanouts ;
-+------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
-
-
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 97                          ;
-;     ENA               ; 82                          ;
+; arriav_ff             ; 123                         ;
+;     CLR               ; 16                          ;
+;     CLR SCLR          ; 8                           ;
+;     ENA               ; 90                          ;
 ;     ENA SLD           ; 9                           ;
-;     plain             ; 6                           ;
-; arriav_lcell_comb     ; 83                          ;
+; arriav_lcell_comb     ; 86                          ;
 ;     arith             ; 10                          ;
-;         4 data inputs ; 1                           ;
+;         1 data inputs ; 1                           ;
 ;         5 data inputs ; 9                           ;
-;     normal            ; 73                          ;
-;         2 data inputs ; 11                          ;
-;         3 data inputs ; 8                           ;
-;         4 data inputs ; 14                          ;
-;         5 data inputs ; 13                          ;
-;         6 data inputs ; 27                          ;
+;     normal            ; 76                          ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 7                           ;
+;         3 data inputs ; 11                          ;
+;         4 data inputs ; 4                           ;
+;         5 data inputs ; 14                          ;
+;         6 data inputs ; 38                          ;
 ; boundary_port         ; 22                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 6.80                        ;
-; Average LUT depth     ; 4.41                        ;
+; Max LUT depth         ; 3.80                        ;
+; Average LUT depth     ; 2.35                        ;
 +-----------------------+-----------------------------+
 
 
@@ -433,7 +357,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -443,43 +367,33 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Wed Aug  1 13:42:13 2018
+    Info: Processing started: Mon Aug 06 10:31:39 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Processador -c Processador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
-Info (12021): Found 5 design units, including 5 entities, in source file Proc.v
-    Info (12023): Found entity 1: Proc File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 1
-    Info (12023): Found entity 2: Reg File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 257
-    Info (12023): Found entity 3: Multiplexer File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 275
-    Info (12023): Found entity 4: ALU File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 302
-    Info (12023): Found entity 5: Decoder3x8 File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 322
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 5 design units, including 5 entities, in source file proc.v
+    Info (12023): Found entity 1: Proc File: C:/Users/Guilherme Pereira/Desktop/proc_test/PSD-Processador/Proc.v Line: 1
+    Info (12023): Found entity 2: Reg File: C:/Users/Guilherme Pereira/Desktop/proc_test/PSD-Processador/Proc.v Line: 290
+    Info (12023): Found entity 3: Multiplexer File: C:/Users/Guilherme Pereira/Desktop/proc_test/PSD-Processador/Proc.v Line: 308
+    Info (12023): Found entity 4: ALU File: C:/Users/Guilherme Pereira/Desktop/proc_test/PSD-Processador/Proc.v Line: 335
+    Info (12023): Found entity 5: Decoder3x8 File: C:/Users/Guilherme Pereira/Desktop/proc_test/PSD-Processador/Proc.v Line: 355
 Info (12127): Elaborating entity "Proc" for the top level hierarchy
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(123): variable "Resetn" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 123
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(157): variable "Run" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 157
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(179): variable "outputIR" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 179
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(180): variable "enableRegX" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 180
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(190): variable "enableRegX" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 190
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(212): variable "outputIR" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 212
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(229): variable "outputIR" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 229
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(231): variable "outputIR" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 231
-Warning (10235): Verilog HDL Always Construct warning at Proc.v(247): variable "enableRegX" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 247
-Info (12128): Elaborating entity "Reg" for hierarchy "Reg:IR" File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 51
-Info (12128): Elaborating entity "Multiplexer" for hierarchy "Multiplexer:multiplexer" File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 68
-Info (12128): Elaborating entity "ALU" for hierarchy "ALU:alu" File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 71
-Info (12128): Elaborating entity "Decoder3x8" for hierarchy "Decoder3x8:addressRX" File: /home/alfredo/Desktop/PSD-Processador/Proc.v Line: 74
-Warning (12241): 9 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (12128): Elaborating entity "Reg" for hierarchy "Reg:IR" File: C:/Users/Guilherme Pereira/Desktop/proc_test/PSD-Processador/Proc.v Line: 51
+Info (12128): Elaborating entity "Multiplexer" for hierarchy "Multiplexer:multiplexer" File: C:/Users/Guilherme Pereira/Desktop/proc_test/PSD-Processador/Proc.v Line: 68
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:alu" File: C:/Users/Guilherme Pereira/Desktop/proc_test/PSD-Processador/Proc.v Line: 71
+Info (12128): Elaborating entity "Decoder3x8" for hierarchy "Decoder3x8:addressRX" File: C:/Users/Guilherme Pereira/Desktop/proc_test/PSD-Processador/Proc.v Line: 74
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 3 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 189 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 199 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 12 input pins
     Info (21059): Implemented 10 output pins
-    Info (21061): Implemented 167 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 1023 megabytes
-    Info: Processing ended: Wed Aug  1 13:42:56 2018
-    Info: Elapsed time: 00:00:43
-    Info: Total CPU time (on all processors): 00:01:04
+    Info (21061): Implemented 177 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4852 megabytes
+    Info: Processing ended: Mon Aug 06 10:31:54 2018
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:29
 
 
